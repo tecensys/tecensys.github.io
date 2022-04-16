@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,28 @@
 </head>
 
 <body>
-    <h1>Tecnologia En Sistemas y Seguridad</h1>
+    <div id="contenedor_carga">
+        <div id="carga"></div>
+        <div id="carga1"></div>
+    </div>
+    <nav>
+        <a href="#">Proyectos</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Diagramas</a>
+        <a href="#">LoT</a>
+    </nav>
+    <h4>Tecnologia En Sistemas y Seguridad</h4>
+    <div>
+        <img src="./tenor.gif">
+    </div>
+    <script>
+        window.onload = function() {
+            var contenedor = document.getElementById('contenedor_carga');
+
+            contenedor.style.visibility = 'hidden';
+            contenedor.style.opacity = '0';
+        }
+    </script>
 </body>
 
 </html>
