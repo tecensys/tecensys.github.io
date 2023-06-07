@@ -1,0 +1,161 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.centro {
+  width: 50%;
+  height: 50%;
+  max-width: 200px;
+  max-height: 200px;
+}
+</style>
+</head>
+<body>
+
+<label for="direction">Selecciona la dirección del gradiente:</label>
+<select id="direction" onchange="updateGradient()">
+  <option value="to bottom right">Diagonal hacia abajo a la derecha</option>
+  <option value="to bottom">Vertical hacia abajo</option>
+  <option value="to right">Horizontal hacia la derecha</option>
+</select>
+
+<label for="numColors">Selecciona el número de colores:</label>
+<input type="number" id="numColors" name="numColors" min="2" max="10" value="2" onchange="updateNumColors()">
+
+<div id="colorPickers"></div>
+
+<div class="contenedor">
+  <div id="miDiv" class="centro"></div>
+</div>
+
+<p>Código CSS para el gradiente:</p>
+<div id="cssCode"></div>
+
+<script>
+function updateGradient() {
+  var direction = document.getElementById("direction").value;
+  var colorPickers = document.querySelectorAll(".colorPicker");
+  var colors = [];
+  for (var i = 0; i < colorPickers.length; i++) {
+    colors.push(colorPickers[i].value);
+  }
+  var gradient = "linear-gradient(" + direction + ", " + colors.join(", ") + ")";
+  document.getElementById("miDiv").style.background = gradient;
+  document.getElementById("cssCode").innerHTML = "background: " + gradient + ";";
+}
+
+function updateNumColors() {
+  var numColors = document.getElementById("numColors").value;
+  var colorPickersDiv = document.getElementById("colorPickers");
+  colorPickersDiv.innerHTML = "";
+  for (var i = 0; i < numColors; i++) {
+    var label = document.createElement("label");
+    label.innerHTML = "Selecciona el color " + (i + 1) + ":";
+    colorPickersDiv.appendChild(label);
+    var input = document.createElement("input");
+    input.type = "color";
+    input.className = "colorPicker";
+    input.onchange = updateGradient;
+    colorPickersDiv.appendChild(input);
+    colorPickersDiv.appendChild(document.createElement("br"));
+  }
+}
+
+updateNumColors();
+</script>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.centro {
+  width: 50%;
+  height: 50%;
+  max-width: 200px;
+  max-height: 200px;
+}
+</style>
+</head>
+<body>
+
+<label for="direction">Selecciona la dirección del gradiente:</label>
+<select id="direction" onchange="updateGradient()">
+  <option value="to bottom right">Diagonal hacia abajo a la derecha</option>
+  <option value="to bottom">Vertical hacia abajo</option>
+  <option value="to right">Horizontal hacia la derecha</option>
+</select>
+
+<label for="numColors">Selecciona el número de colores:</label>
+<input type="number" id="numColors" name="numColors" min="2" max="10" value="2" onchange="updateNumColors()">
+
+<div id="colorPickers"></div>
+
+<div class="contenedor">
+  <div id="miDiv" class="centro"></div>
+</div>
+
+<p>Código CSS para el gradiente:</p>
+<div id="cssCode"></div>
+
+<script>
+window.updateGradient = function() {
+  var direction = document.getElementById("direction").value;
+  var colorPickers = document.querySelectorAll(".colorPicker");
+  var colors = [];
+  for (var i = 0; i < colorPickers.length; i++) {
+    colors.push(colorPickers[i].value);
+  }
+  var gradient = "linear-gradient(" + direction + ", " + colors.join(", ") + ")";
+  document.getElementById("miDiv").style.background = gradient;
+  document.getElementById("cssCode").innerHTML = "background: " + gradient + ";";
+}
+
+window.updateNumColors = function() {
+  var numColors = document.getElementById("numColors").value;
+  var colorPickersDiv = document.getElementById("colorPickers");
+  colorPickersDiv.innerHTML = "";
+  for (var i = 0; i < numColors; i++) {
+    var label = document.createElement("label");
+    label.innerHTML = "Selecciona el color " + (i + 1) + ":";
+    colorPickersDiv.appendChild(label);
+    var input = document.createElement("input");
+    input.type = "color";
+    input.className = "colorPicker";
+    input.onchange = updateGradient;
+    colorPickersDiv.appendChild(input);
+    colorPickersDiv.appendChild(document.createElement("br"));
+  }
+}
+
+updateNumColors();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<style>
+    .imgRele{
+        color: #606868;
+        box-shadow: 2px 2px 12px 2px;
+        margin: 15px;
+        width: 80%;
+        height: auto;
+        animation: aparecer 2s;
+    }
+    .pclass{
+        margin: 5px 50px 5px 50px;
+    text-align: justify;
+    font-size: 17px;
+    transition: 2s;
+    animation: aparecer 2s;
+    }
+    @keyframes aparecer{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 100;
+        }
+    }
+    </style>
+        <p>¿Cuál es la forma correcta de conectar bocinas a un amplificador?</p>
+    <img class="imgRele" src="./view/resistenciaAudio/bocinas1.PNG">
+    <p class="pclass">En la primera imagen se observa una conexion en serie y que la cantidad de bocinas supera las especificaciones del amplificador, que es de 60 watts a 8 ohmios. Como resultado, el amplificador no entrega los 60 watts completos y la potencia se distribuye entre las bocinas, provocando un sobrecalentamiento del amplificador al no cumplir con sus especificaciones, que fueron probadas para entregar una potencia máxima de 60 watts a 8 ohmios.</p>
+    <img class="imgRele" src="./view/resistenciaAudio/bocinas2.PNG">
+    <p class="pclass">En la segunda imagen se observa una conexión en serie de cuatro bocinas de 8 ohms. Al contar con cuatro caminos por donde puede fluir la energía, la resistencia de las bocinas disminuye a 2 ohms. Esta también es una conexión incorrecta ya que el amplificador garantiza que entrega su máxima potencia a 60 watts y 8 ohms sin riesgos de calentamiento excesivo que puedan dañar el amplificador.</p>
+    <img class="imgRele" src="./view/resistenciaAudio/bocinas3.PNG">
+    <p class="pclass">En la tercera imagen se observa una conexión en paralelo con dos bocinas de 16 ohms. Al existir dos caminos por donde puede fluir la energía, la resistencia baja a 8 ohms. Al ser dos bocinas de 30 watts, la suma de ambas nos da 60 watts a 8 ohms. Esta es una conexión correcta ya que el amplificador nos entrega 60 watts a 8 ohms.</p>
+    <img class="imgRele" src="./view/resistenciaAudio/bocinas4.PNG">
+    <p class="pclass">En la cuarta imagen, podemos ver una elegante conexión en serie con dos bocinas de 30 watts y 4 ohms cada una. Esta forma de conexión permite que las resistencias de las bocinas se sumen, logrando un consumo total de 60 watts a 8 ohms. De esta manera, cumplimos con las especificaciones de operación del amplificador, que nos brinda una potencia óptima de 60 watts a 8 ohms. ¡Esta es una conexión perfecta!</p>
+    <img class="imgRele" src="./view/resistenciaAudio/bocinas5.PNG">
+    <p class="pclass">En la quinta imagen, podemos ver la conexión de una sola bocina que requiere 60 watts y tiene una impedancia de 8 ohms. Esta bocina cumple perfectamente con las especificaciones del amplificador, que entrega 60 watts a 8 ohms. Por lo tanto, esta es una conexión correcta y óptima.</p>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+.container{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+        #timer {
+            font-size: 36px;
+            text-align: center;
+            position: fixed;
+            padding: 15px;
+            box-shadow: inset 0 0 10px #000000;
+    background-color: rgb(104 133 114);
+    top: 90px;
+        }
+        .inputs {
+            display: flex;
+    position: fixed;
+    top: 170px;
+        }
+        .inputs label {
+            margin-right: 10px;
+        }
+        .buttons button {
+    margin-right: 1em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.25em;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.buttons button:hover {
+    background-color: #3E8E41;
+}
+
+.buttons button:active {
+    background-color: #2E7D32;
+}
+.inputClass{
+background-color: rgb(104 133 114);
+width: 50px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div id="timer">00h 00m 00s 00cs</div>
+    <div id="message"></div>
+    <div class="inputs">
+        <label for="hoursInput">Horas:</label>
+        <input class="inputClass" type="number" id="hoursInput" value="0" max="99" min="0" size="4">
+        <label for="minutesInput">Minutos:</label>
+        <input class="inputClass" type="number" id="minutesInput" value="1" max="60" min="0" size="4">
+        <label for="secondsInput">Segundos:</label>
+        <input class="inputClass" type="number" id="secondsInput" value="0" max="60" min="0" size="4">
+    </div>
+    <div class="buttons">
+        <button onclick="toggleTimer()">Iniciar/Pausar temporizador</button>
+        <button onclick="resetTimer()">Restablecer temporizador</button>
+    </div>
+
+    <script>
+        let timeLeft = 0;
+        let timerRunning = false;
+        let alarmSound = new Audio('https://freesound.org/data/previews/80/80921_1022651-lq.mp3');
+        let startTime;
+
+        window.toggleTimer = function () {
+            if (!timerRunning) {
+                let hours = document.getElementById("hoursInput").value;
+                let minutes = document.getElementById("minutesInput").value;
+                let seconds = document.getElementById("secondsInput").value;
+                timeLeft = (hours * 3600000) + (minutes * 60000) + (seconds * 1000);
+                startTime = performance.now();
+                timerRunning = true;
+                requestAnimationFrame(countdown);
+            } else {
+                timerRunning = false;
+            }
+        }
+
+        window.resetTimer = function () {
+            timeLeft = 0;
+            document.getElementById("timer").innerHTML = "00h 00m 00s 00cs";
+            timerRunning = false;
+        }
+
+       window.countdown = function (timestamp) {
+            if (timerRunning) {
+                timeLeft -= timestamp - startTime;
+                startTime = timestamp;
+
+                if (timeLeft <= 0) {
+                    document.getElementById("timer").innerHTML = "¡Tiempo agotado!";
+                    alarmSound.play();
+                    timerRunning = false;
+                } else {
+                    let hours = Math.floor(timeLeft / 3600000);
+                    let minutes = Math.floor((timeLeft % 3600000) / 60000);
+                    let seconds = Math.floor((timeLeft % 60000) / 1000);
+                    let centiseconds = Math.floor((timeLeft % 1000) / 10);
+
+                    document.getElementById("timer").innerHTML = hours.toString().padStart(2, '0') + "h " + minutes.toString().padStart(2, '0') + "m " + seconds.toString().padStart(2, '0') + "s " + centiseconds.toString().padStart(2, '0') + "cs";
+                    requestAnimationFrame(countdown);
+                }
+            }
+        }
+    </script>
+    </div>
+</body>

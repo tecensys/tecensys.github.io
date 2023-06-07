@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>Presiona una tecla en el teclado:</p>
+    <p id="output"></p>
+
+    <script>
+      var morseCode = {
+        "A": ".-",
+        "B": "-...",
+        "C": "-.-.",
+        "D": "-..",
+        "E": ".",
+        "F": "..-.",
+        "G": "--.",
+        "H": "....",
+        "I": "..",
+        "J": ".---",
+        "K": "-.-",
+        "L": ".-..",
+        "M": "--",
+        "N": "-.",
+        "O": "---",
+        "P": ".--.",
+        "Q": "--.-",
+        "R": ".-.",
+        "S": "...",
+        "T": "-",
+        "U": "..-",
+        "V": "...-",
+        "W": ".--",
+        "X": "-..-",
+        "Y": "-.--",
+        "Z": "--.."
+      };
+
+      document.addEventListener("keydown", function (event) {
+        var asciiCode = event.key.charCodeAt(0);
+        var bits = asciiCode.toString(2);
+        var morse = morseCode[event.key.toUpperCase()] || "";
+        
+        document.getElementById("output").innerHTML =
+          "Tecla: " + event.key + "<br>Código de Tecla: " + event.keyCode + "<br>Código ASCII: " + asciiCode + "<br>Bits: " + bits + "<br>Morse: "+morse + "<br>Hexadecimal: "+asciiCode.toString(16);
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <body>
+    <p>Ingresa texto:</p>
+    <input type="text" id="inputText">
+    <button onclick="displayOutput()">Mostrar salida</button>
+    <p id="output"></p>
+
+    <script>
+      var morseCode = {
+        "A": ".-",
+        "B": "-...",
+        "C": "-.-.",
+        "D": "-..",
+        "E": ".",
+        "F": "..-.",
+        "G": "--.",
+        "H": "....",
+        "I": "..",
+        "J": ".---",
+        "K": "-.-",
+        "L": ".-..",
+        "M": "--",
+        "N": "-.",
+        "O": "---",
+        "P": ".--.",
+        "Q": "--.-",
+        "R": ".-.",
+        "S": "...",
+        "T": "-",
+        "U": "..-",
+        "V": "...-",
+        "W": ".--",
+        "X": "-..-",
+        "Y": "-.--",
+        "Z": "--.."
+      };
+
+      function displayOutput() {
+          var inputText = document.getElementById("inputText").value;
+          var output = "";
+          for (var i = 0; i < inputText.length; i++) {
+              var asciiCode = inputText[i].charCodeAt(0);
+              var bits = asciiCode.toString(2);
+              var morse = morseCode[inputText[i].toUpperCase()] || "";
+              output += "<br>Tecla: "+inputText[i]+"<br>Código ASCII: "+asciiCode+"<br>Bits: "+bits+"<br>Morse: "+morse+"<br>Hexadecimal: "+asciiCode.toString(16)+"<br>";
+          }
+          document.getElementById("output").innerHTML = output;
+      }
+    </script>
+  </body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convertidor de texto a binario</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+    <h1>Convertidor de texto a binario</h1>
+    <div id="container">
+        <!-- El código JavaScript agregará los elementos de entrada, botón y resultado aquí -->
+    </div>
+    <script>
+let input = document.createElement('input');
+let button = document.createElement('button');
+button.innerHTML = 'Convertir';
+let binaryTitle = document.createElement('p');
+binaryTitle.innerHTML = 'Cadena binaria:';
+let result = document.createElement('p');
+let keyCodesTitle = document.createElement('p');
+keyCodesTitle.innerHTML = 'Códigos de teclas:';
+let keyCodes = document.createElement('p');
+let asciiTitle = document.createElement('p');
+asciiTitle.innerHTML = 'Código ASCII:';
+let asciiCodes = document.createElement('p');
+let hexTitle = document.createElement('p');
+hexTitle.innerHTML = 'Código hexadecimal:';
+let hexCodes = document.createElement('p');
+let morseTitle = document.createElement('p');
+morseTitle.innerHTML = 'Código Morse:';
+let morseCodes = document.createElement('p');
+let brailleTitle = document.createElement('p');
+brailleTitle.innerHTML = 'Código Braille:';
+let brailleCodes = document.createElement('p');
+
+document.body.appendChild(input);
+document.body.appendChild(button);
+document.body.appendChild(binaryTitle);
+document.body.appendChild(result);
+document.body.appendChild(keyCodesTitle);
+document.body.appendChild(keyCodes);
+document.body.appendChild(asciiTitle);
+document.body.appendChild(asciiCodes);
+document.body.appendChild(hexTitle);
+document.body.appendChild(hexCodes);
+document.body.appendChild(morseTitle);
+document.body.appendChild(morseCodes);
+document.body.appendChild(brailleTitle);
+document.body.appendChild(brailleCodes);
+
+const morseCodeMap = {
+  'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
+  0: "-----", 1: ".----", 2: "..---", 3: "...--", 4: "....-", 5: ".....", 6: "-....", 7: "--...", 8: "---..", 9: "----.", " ": "/",
+  ".": ".-.-.-", ",": "--..--", "?": "..--..", "'": ".----.", "!": "-.-.--", "/": "-..-.", "(": "-.--.", ")": "-.--.-", "&": ".-...", ":": "---...", ";": "-.-.-.", "=": "-...-", "+": ".-.-.", "-": "-....-", "_": "..--.-", "\"": ".-..-.", "$": "...-..-", "@": ".--.-."
+};
+const brailleCodeMap = {
+    'a': '⠁',
+    'b': '⠃',
+    'c': '⠉',
+    'd': '⠙',
+    'e': '⠑',
+    'f': '⠋',
+    'g': '⠛',
+    'h': '⠓',
+    'i': '⠊',
+    'j': '⠚',
+    'k': '⠅',
+    'l': '⠇',
+    'm': '⠍',
+    'n': '⠝',
+    'ñ': '⠵',
+    'o': '⠕',
+    'p': '⠏',
+    'q': '⠟',
+    'r': '⠗',
+    's': '⠎',
+    't': '⠞',
+    'u': '⠥',
+    'v': '⠧',
+    'w': '⠺',
+    'x':' ⠭',
+    'y':' ⠽',
+    'z':' ⠵',
+    '1': '⠼⠁',
+    '2': '⠼⠃',
+    '3': '⠼⠉',
+    '4': '⠼⠙',
+    '5': '⠼⠑',
+    '6': '⠼⠋',
+    '7': '⠼⠛',
+    '8': '⠼⠓',
+    '9': '⠼⠊',
+    '0': '⠼⠚',
+    ' ': '  '
+};
+
+button.addEventListener('click', function() {
+    let text = input.value;
+    let binaryString = '';
+    let keyCodesString = '';
+    let asciiString = '';
+    let hexString = '';
+    let morseString = '';
+    let brailleString = '';
+    for (let i = 0; i < text.length; i++) {
+        binaryString += text[i].charCodeAt(0).toString(2) + ' ';
+        keyCodesString += text[i].charCodeAt(0) + ' ';
+        asciiString += text[i].charCodeAt(0) + ' ';
+        hexString += text[i].charCodeAt(0).toString(16) + ' ';
+        morseString += morseCodeMap[text[i].toUpperCase()] + (text[i] === " " ? "" : " ");
+        brailleString += brailleCodeMap[text[i].toUpperCase()] + (text[i] === " " ? "" : " ");
+    }
+    result.innerHTML = binaryString;
+    keyCodes.innerHTML = keyCodesString;
+    asciiCodes.innerHTML = asciiString;
+    hexCodes.innerHTML = hexString;
+    morseCodes.innerHTML = morseString;
+    brailleCodes.innerHTML = brailleString;
+});
+
+
+
+
+// var keyCodes2 = [];
+
+// document.querySelector('input').addEventListener('keydown', function(event) {
+//     keyCodes.push(event.keyCode);
+// });
+
+// document.querySelector('button').addEventListener('click', function() {
+//     console.log(keyCodes2);
+// });
+    </script>
+</body>
+</html>
+
+

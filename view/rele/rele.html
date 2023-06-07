@@ -1,0 +1,37 @@
+<style>
+    .imgClass{
+        color: #606868;
+        box-shadow: 2px 2px 12px 2px;
+        margin: 15px;
+        width: 80%;
+        height: auto;
+        animation: aparecer 2s;
+    }
+    .pClass{
+        margin: 5px 50px 5px 50px;
+    text-align: justify;
+    /* font-size: 17px; */
+    font-size: calc(12px + (17 - 12) * ((100vw - 300px) / (1600 - 300)));
+    transition: 2s;
+    animation: aparecer 2s;
+    }
+    @keyframes aparecer{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 100;
+        }
+    }
+    .videoClass{
+        width: 80%;
+        height: auto;
+    }
+    </style>
+    <p class="pClass">Relé de Enclavamiento</p>
+<img class="imgClass" src="./view/rele/releenclavado1.PNG" alt="example image1" loading="lazy">
+<p class="pClass">Este circuito muestra cómo hacer funcionar un relé de enclavamiento que permanece activado hasta que se corta el suministro de energía. En este punto, cuando se restablece la energía, el relé se desactiva. Este circuito se puede utilizar para activar una alerta audible y visible para una alarma, por ejemplo en puertas de emergencia. </p>
+<img class="imgClass" src="./view/rele/releenclavado2.PNG" alt="example image2" loading="lazy">
+<p class="pClass">En esta imagen, se muestra un circuito que incluye un diodo LED y un buzzer. Cuando el circuito es activado, funciona como una alarma audible y visible. La alarma solo puede ser desactivada si se corta la energía y se restablece.</p>
+<video class="videoClass" src="./view/rele/20230502_020307.mp4" controls></video>
+<p class="pClass">Video Demostrativo del Funcionamiento del Circuito</p>

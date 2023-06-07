@@ -1,0 +1,113 @@
+ <!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+.contenedorColor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.centroColor {
+  width: 50%;
+  height: 50%;
+  max-width: 200px;
+  max-height: 200px;
+}
+</style>
+</head>
+<body>
+
+<label for="colorFavorito">Selecciona tu color favorito:</label>
+<input type="color" id="colorFavorito" name="colorFavorito" onchange="cambiarColor(this.value)">
+
+<div class="contenedorColor">
+  <div id="miDivColor" class="centroColor"></div>
+</div>
+
+<script>
+function cambiarColor(color) {
+  document.getElementById("miDivColor").style.backgroundColor = color;
+}
+</script>
+
+</body>
+</html> -->
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <style>
+ .contenedorColor {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+ }
+ 
+ /* .centroColor {
+   width: 50%;
+   height: 50%;
+   max-width: 200px;
+   max-height: 200px;
+ } */
+ .imgClass{
+width: 100%;
+height: auto;
+ }
+ </style>
+ </head>
+ <body>
+ 
+ <label for="colorFavorito">Selecciona tu color favorito:</label>
+ <input type="color" id="colorFavorito" name="colorFavorito" onchange="cambiarColor(this.value)">
+ 
+ <div class="contenedorColor">
+   <div id="miDivColor" class="centroColor"><img class="imgClass" src="./view/herramientas/sala.png"></div>
+ </div>
+ 
+ <script>
+ // Definir la función cambiarColor en el contexto global
+ window.cambiarColor = function(color) {
+     document.getElementById("miDivColor").style.backgroundColor = color;
+ }
+ </script>
+ 
+ </body>
+ </html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

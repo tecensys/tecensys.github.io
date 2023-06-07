@@ -1,0 +1,42 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #content {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">Contenido de la página 1</div>
+    <a href="#" onclick="loadPage('index.html'); return false;">Cargar página de ventas</a><br>
+    <a href="#" onclick="loadPage('ificina/oficina.html'); return false;">Cargar página de oficina</a>
+
+    <script>
+        function loadPage(pageUrl) {
+            // Actualiza la URL en la barra de direcciones
+            history.pushState({page: pageUrl}, "título " + pageUrl, "?page=" + pageUrl);
+
+            // Usa fetch para cargar el contenido de la nueva página
+            fetch(pageUrl)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById("content").innerHTML = text;
+                });
+        }
+
+        // Verifica la URL cuando se carga la página
+        window.onload = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var page = urlParams.get("page");
+            if (page) {
+                loadPage(page);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,37 +1,56 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel=StyleSheet href="estilos.css" TYPE="text/css" MEDIA=screen>
+    <link rel="stylesheet" type="text/css" href="./css_js/css/style.css?20230515">
     <title>TECENSYS</title>
+    <!-- Etiquetas meta adicionales -->
+    <!-- <meta name="description" content="Descripción de tu sitio web aquí">
+    <meta name="keywords" content="palabras clave para tu sitio web aquí">
+    <meta name="author" content="Nombre del autor aquí">
+    <meta name="robots" content="index,follow"> -->
+    <!-- Etiquetas meta adicionales -->
+    <!-- <meta name="application-name" content="Nombre de tu aplicación aquí">
+    <meta name="theme-color" content="#hexcolor">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+    <!-- Etiquetas meta adicionales -->
+    <!-- <meta property="og:title" content="Título de tu sitio web aquí">
+    <meta property="og:description" content="Descripción de tu sitio web aquí">
+    <meta property="og:image" content="URL de la imagen de vista previa aquí">
+    <meta property="og:url" content="URL de tu sitio web aquí"> -->
+    <style>
+      img{
+        background-color: blue;
+        transition: 2s;
+      }
+      img:hover{
+        filter:invert(1);
+        transition:2s;
+      }
+    </style>
 </head>
+<div id="progress-bar"></div>
+<body> 
+    <div id="contenedorMenu">
+  <header></header>
+</div>
+<div id="text"></div>
 
-<body>
-    <div id="contenedor_carga">
-        <div id="carga"></div>
-        <div id="carga1"></div>
-    </div>
-    <nav>
-        <a href="#">Proyectos</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Diagramas</a>
-        <a href="#">LoT</a>
-    </nav>
-    <h4>Tecnologia En Sistemas y Seguridad</h4>
-    <div>
-        <img src="./tenor.gif">
-    </div>
-    <script>
-        window.onload = function() {
-            var contenedor = document.getElementById('contenedor_carga');
 
-            contenedor.style.visibility = 'hidden';
-            contenedor.style.opacity = '0';
-        }
-    </script>
+<img id="portada" src="./media/webp/fondo.webp">
+
+
+
+<div id="micon"></div>
+
+
+  <footer></footer>
+  <script type="text/javascript" src="./css_js/js/script.js?20230515"></script>
 </body>
-
 </html>

@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(./fuentes/Roboto/Roboto-Light.ttf);
+}
+body{
+    background-color: black;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(/media/webp/fondo.webp);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family:  Roboto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: calc(0.5em + 0.5vw);
+}
+#progress-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-image: linear-gradient(to right, rgb(255, 0, 170), rgb(162, 0, 255), rgb(255, 255, 0));
+    transition: width 0.3s ease-in-out;
+ 
+}
+#contenedorMenu{
+    background-color: rgba(0, 0, 0, 0.226);
+    box-shadow: 2px 2px 12px 2px #ffffff66;
+    animation: opacity 5s;
+}
+@keyframes opacity {
+    from {opacity:0;}
+    to {opacity:100;}
+  }
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-weight: bold;
+}
+h1{
+    color: white;
+    font-size: 45px;
+}
+ul li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+    background-color: #001a3a;
+    margin-top: auto;
+}

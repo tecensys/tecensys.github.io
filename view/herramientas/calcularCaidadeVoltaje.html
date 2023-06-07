@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        input[type=number] {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="voltaje">Voltaje (voltios):</label>
+        <input type="number" id="voltaje"><br><br>
+        <label for="corriente">Corriente (amperios):</label>
+        <input type="number" id="corriente"><br><br>
+        <label for="calibre">Calibre del cable (AWG):</label>
+        <input type="number" id="calibre"><br><br>
+        <label for="longitud">Longitud del cable (metros):</label>
+        <input type="number" id="longitud"><br><br>
+        <button onclick="calcularPerdidaVoltaje()">Calcular pérdida de voltaje</button><br><br>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        // Valores de resistencia por metro para diferentes calibres de cable según la tabla AWG
+        const resistencias = {
+            14: 0.008286,
+            12: 0.005211,
+            10: 0.003277,
+            // ...
+        }
+
+        function calcularPerdidaVoltaje() {
+            let voltaje = document.getElementById("voltaje").value;
+            let corriente = document.getElementById("corriente").value;
+            let calibre = document.getElementById("calibre").value;
+            let longitud = document.getElementById("longitud").value;
+            let resistencia = resistencias[calibre];
+            let perdidaVoltaje = corriente * resistencia * longitud;
+            document.getElementById("resultado").innerHTML = "La pérdida de voltaje es: " + perdidaVoltaje + " voltios";
+        }
+    </script>
+</body>
+</html>

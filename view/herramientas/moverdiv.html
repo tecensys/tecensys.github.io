@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+.movingDiv {
+  border: 1px solid;
+  width: 30%;
+  height: 100%;
+  padding: 0.5em;
+  overflow: hidden;
+  position: absolute;
+}
+
+.resizer {
+  width: 10px;
+  height: 100%;
+  background-color: transparent;
+  cursor: e-resize;
+  position: absolute;
+  top: 0;
+  right: -5px;
+}
+#container{
+    background-color: blue;
+}
+</style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+let container = document.querySelector("#container");
+let movingDiv = document.createElement("div");
+movingDiv.classList.add("movingDiv");
+container.appendChild(movingDiv);
+
+let resizer = document.createElement("div");
+resizer.classList.add("resizer");
+movingDiv.appendChild(resizer);
+
+let isResizing = false;
+let currentX;
+let initialWidth;
+
+resizer.addEventListener("mousedown", (e) => {
+  isResizing = true;
+  currentX = e.clientX;
+  initialWidth = movingDiv.offsetWidth;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isResizing) return;
+
+  let dx = e.clientX - currentX;
+
+  movingDiv.style.width = initialWidth + dx + "px";
+});
+
+document.addEventListener("mouseup", (e) => {
+  isResizing = false;
+});
+    </script>
+</body>
+</html>

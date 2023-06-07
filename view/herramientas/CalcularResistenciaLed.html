@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* Centrar el contenido horizontal y verticalmente */
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+      
+        /* Estilos para el contenedor */
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: #f0f0f0;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+      
+        /* Estilos para los inputs */
+        input[type="text"] {
+          width: 200px;
+          padding: 5px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          border: none;
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+      
+        /* Estilos para el botón */
+        button {
+          padding: 10px 20px;
+          background-color: #4CAF50;
+          color: white;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          margin-bottom: 20px;
+          box-shadow: 0 5px #3E8E41;
+        }
+      
+        button:hover {
+          background-color: #3E8E41;
+        }
+      
+        button:active {
+          background-color: #3E8E41;
+          box-shadow: none;
+          transform: translateY(4px);
+        }
+      </style>
+      
+      <div class="container">
+      <!-- Elementos input para ingresar los datos -->
+      Voltaje de alimentación:<br><input type="text" id="voltajeAlimentacion"><br>
+      Voltaje del LED:<br><input type="text" id="voltajeLED"><br>
+      Corriente del LED:<br><input type="text" id="corrienteLED"><br>
+      Unidad de corriente:<br>
+      <select id="unidadCorriente">
+      <option value="amperios">Amperios</option>
+      <option value="miliamperios">Miliamperios</option>
+      </select><br>
+      
+      <button onclick="calcularResistencia()">Calcular resistencia</button>
+      
+      <!-- Elemento para mostrar el resultado -->
+      <p>La resistencia necesaria es:<br><span id="resultado"></span></p>
+      <p id="colores"></p>
+      </div>
+      
+      <script>
+
+function calcularResistencia() {
+    // Obtener los valores de los inputs
+    let voltajeAlimentacion = document.getElementById("voltajeAlimentacion").value;
+    let voltajeLED = document.getElementById("voltajeLED").value;
+
+    // Obtener la corriente del LED y convertirla a amperios si es necesario
+    let corrienteLED = document.getElementById("corrienteLED").value;
+    let unidadCorriente = document.getElementById("unidadCorriente").value;
+
+    if (unidadCorriente === "miliamperios") {
+        corrienteLED = corrienteLED / 1000; // Convertir miliamperios a amperios
+    }
+
+    // Calcular el valor de la resistencia
+    let resistencia = (voltajeAlimentacion - voltajeLED) / corrienteLED;
+
+    // Determinar la unidad adecuada para mostrar el resultado
+    let unidadResistencia = "ohmios";
+    if (resistencia >= 1000000) {
+        resistencia = resistencia / 1000000;
+        unidadResistencia = "megaohmios";
+    } else if (resistencia >= 1000) {
+        resistencia = resistencia / 1000;
+        unidadResistencia = "kiloohmios";
+    }
+
+    // Mostrar el resultado en la página
+    document.getElementById("resultado").textContent = resistencia/*.toFixed(2)*/ + " " + unidadResistencia;
+
+    // Calcular los colores de las bandas de la resistencia
+    let colores = calcularColoresBanda(resistencia);
+    document.getElementById("colores").textContent = "Colores de las bandas: " + colores.join(", ");
+}
+
+function calcularColoresBanda(valor) {
+    // Redondear el valor al entero más cercano
+    valor = Math.round(valor);
+
+    // Crear un objeto para mapear dígitos a colores  
+let mapaColores = {
+        0: "Negro",
+        1: "Marrón",
+        2: "Rojo",
+        3: "Naranja",
+        4: "Amarillo",
+        5: "Verde",
+        6: "Azul",
+        7: "Violeta",
+        8: "Gris",
+        9: "Blanco"
+    };
+
+    // Convertir el valor a un arreglo de dígitos
+    let digitos = valor.toString().split("");
+
+    // Calcular los colores de las bandas
+    let colores = [];
+    
+    if (digitos.length === 1) {
+      colores.push(mapaColores[digitos[0]]);
+      colores.push(mapaColores[0]);
+      colores.push(mapaColores[0]);
+      
+      return colores;
+      
+      } else if (digitos.length === 2) {
+      colores.push(mapaColores[digitos[0]]);
+      colores.push(mapaColores[digitos[1]]);
+      colores.push(mapaColores[0]);
+      
+      return colores;
+      
+      } else if (digitos.length === 3) {
+      colores.push(mapaColores[digitos[0]]);
+      colores.push(mapaColores[digitos[1]]);
+      colores.push(mapaColores[1]);
+      
+      return colores;
+      
+      } else if (digitos.length === 4) {
+      colores.push(mapaColores[digitos[0]]);
+      colores.push(mapaColores[digitos[1]]);
+      colores.push(mapaColores[2]);
+      
+      return colores;
+      
+      } else if (digitos.length === 5) {
+      colores.push(mapaColores[digitos[0]]);
+      colores.push(mapaColores[digitos[1]]);
+      colores.push(mapaColores[3]);
+      
+      return colores;
+      
+      } else if (digitos.length === 6) {
+      colores.push(mapaColores[digitos[0]]);
+      colores.push(mapaColores[digitos[1]]);
+      colores.push(mapaColores[4]);
+      
+      return colores;
+    }
+}
+</script>
+</body>
+</html>

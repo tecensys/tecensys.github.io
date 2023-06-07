@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Calculator</title>
+    <style>
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            max-width: 400px;
+        }
+        .calculator button {
+            font-size: 2rem;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: none;
+        }
+        .calculator button:hover {
+            background-color: #e6e6e6;
+        }
+        .calculator input[type="text"] {
+            grid-column: span 4;
+            font-size: 2rem;
+            padding: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="clearLastEntry()">CE</button>
+        <button></button>
+        <button onclick="addToDisplay('/')">/</button>
+        <button onclick="addToDisplay('7')">7</button>
+        <button onclick="addToDisplay('8')">8</button>
+        <button onclick="addToDisplay('9')">9</button>
+        <button onclick="addToDisplay('*')">*</button>
+        <button onclick="addToDisplay('4')">4</button>
+        <button onclick="addToDisplay('5')">5</button>
+        <button onclick="addToDisplay('6')">6</button>
+        <button onclick="addToDisplay('-')">-</button>
+        <button onclick="addToDisplay('1')">1</button>
+        <button onclick="addToDisplay('2')">2</button>
+        <button onclick="addToDisplay('3')">3</button>
+        <button onclick="addToDisplay('+')">+</button>
+        <button onclick="addToDisplay('.')">.</button>
+        <button onclick="addToDisplay('0')">0</button>        
+        <button onclick="addToDisplay('00')">00</button>        
+        <button onclick="calculate()">=</button>        
+    </div>
+
+    <script>
+        let display = document.getElementById("display");
+
+       window.addToDisplay = function (character) {
+            display.value += character;
+        }
+
+        window.clearDisplay = function () {
+            display.value = "";
+        }
+
+        window.clearLastEntry = function () {
+            display.value = display.value.slice(0, -1);
+        }
+
+       window.calculate = function () {
+           try {
+               display.value = eval(display.value);
+           } catch (e) {
+               if (e instanceof SyntaxError) {
+                   alert(e.message);
+               }
+           }
+       }
+
+       document.addEventListener("keydown", function(event) {
+           if (event.key >= 0 && event.key <= 9) {
+               addToDisplay(event.key);
+           } else if (event.key === ".") {
+               addToDisplay(".");
+           } else if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
+               addToDisplay(event.key);
+           } else if (event.key === "Enter") {
+               calculate();
+           } else if (event.key === "Backspace") {
+               clearLastEntry();
+           } else if (event.key === "Escape") {
+               clearDisplay();
+           }
+       });
+    </script>
+
+</body>
+</html>

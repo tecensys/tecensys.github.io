@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+        #timer {
+            font-size: 36px;
+            text-align: center;
+            padding: 15px;
+            box-shadow: inset 0 0 10px #000000;
+    background-color: rgb(104 133 114);
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        .buttons button {
+    margin-right: 1em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.25em;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.buttons button:hover {
+    background-color: #3E8E41;
+}
+
+.buttons button:active {
+    background-color: #2E7D32;
+}
+    </style>
+</head>
+<body>
+    <div id="timer">00h 00m 00s 00cs</div>
+    <div class="buttons">
+        <button onclick="toggleTimer()">Iniciar/Pausar cronómetro</button>
+        <button onclick="resetTimer()">Restablecer cronómetro</button>
+    </div>
+
+    <script>
+        let timeElapsed = 0;
+        let timerRunning = false;
+        let startTime;
+
+       window.toggleTimer = function () {
+            if (!timerRunning) {
+                startTime = performance.now();
+                timerRunning = true;
+                requestAnimationFrame(countup);
+            } else {
+                timerRunning = false;
+            }
+        }
+
+       window.resetTimer = function () {
+            timeElapsed = 0;
+            document.getElementById("timer").innerHTML = "00h 00m 00s 00cs";
+            timerRunning = false;
+        }
+
+       window.countup = function (timestamp) {
+            if (timerRunning) {
+                timeElapsed += timestamp - startTime;
+                startTime = timestamp;
+
+                let hours = Math.floor(timeElapsed / 3600000);
+                let minutes = Math.floor((timeElapsed % 3600000) / 60000);
+                let seconds = Math.floor((timeElapsed % 60000) / 1000);
+                let centiseconds = Math.floor((timeElapsed % 1000) / 10);
+
+                document.getElementById("timer").innerHTML = hours.toString().padStart(2, '0') + "h " + minutes.toString().padStart(2, '0') + "m " + seconds.toString().padStart(2, '0') + "s " + centiseconds.toString().padStart(2, '0') + "cs";
+                requestAnimationFrame(countup);
+            }
+        }
+    </script>
+</body>
+</html>
